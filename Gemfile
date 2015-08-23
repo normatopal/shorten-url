@@ -32,6 +32,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'haml'
 gem 'bootstrap-sass', '~> 3.3.5'
+gem "heroku"
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
@@ -55,5 +56,6 @@ group :test do
 end
 
 group :production do
+  gem 'thin'
   gem 'pg'
 end
