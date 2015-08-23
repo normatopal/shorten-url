@@ -17,6 +17,3 @@ test:
   password: ubuntu
   host: localhost
 
-production:
-  <<: *default
-  database: db/production.sqlite3
