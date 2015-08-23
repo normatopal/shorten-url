@@ -16,6 +16,7 @@
 !/log/.keep
 /tmp
 *.orig
+.idea/
 
 #Ignore Backup files
 *.html.haml.BACKUP.*.haml
