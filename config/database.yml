@@ -1,0 +1,22 @@
+development:
+  adapter: mysql
+  reconnect: false
+  database: shortenurl
+  pool: 5
+  username: root
+  password: ubuntu
+  host: localhost
+
+test:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: shortenurl_test
+  pool: 5
+  username: root
+  password: ubuntu
+  host: localhost
+
+production:
+  <<: *default
+  database: db/production.sqlite3

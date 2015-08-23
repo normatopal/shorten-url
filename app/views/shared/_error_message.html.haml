@@ -1,0 +1,5 @@
+- if entity.errors.any?
+  %h4= "#{entity.errors.count} errors prohibited this link from being shortened"
+  %ul
+    - entity.errors.full_messages.each do |msg|
+      %li= msg
