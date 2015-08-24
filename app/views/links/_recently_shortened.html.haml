@@ -18,6 +18,6 @@
                 %td.col-xs-5
                   %span
                     = link_to truncate(show_long_url(lnk['long_url']), lenght: 100), url_for(lnk['long_url'])
-                  %span
+                  %span{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Clicks count"}
                     = lnk['clicks_count']
                     %span.glyphicon.glyphicon-stats

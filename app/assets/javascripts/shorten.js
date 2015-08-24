@@ -6,4 +6,6 @@ $(document).ready(function() {
     $($("#short-url-link")).blur(function() {
         this.setSelection({"start":0, "end":0});
     });
+
+    $('[data-toggle="tooltip"]').tooltip();
 });
