@@ -1,16 +1,16 @@
 .row
-  .col-lg-8.col-md-10.text-center
+  .col-lg-8.col-md-10.col-sm-12.text-center
     %h2
       Your link has been shortened
 
 %section#form
   .row
-    .col-lg-8.col-md-10.text-center
+    .col-lg-8.col-md-10.col-sm-12.text-center
       .form-inline
         .form-group
           = text_field_tag "new_url", show_short_url(@link.short_url), id: "short-url-link", class: "form-control"
         .form-group
-          = button_tag "Copy", id: 'btn-copy-link', class: 'btn btn-copy'
+          = button_tag "Copy", id: 'btn-copy-link', class: 'btn btn-default'
 
       = render "form", :link => @new_link
 

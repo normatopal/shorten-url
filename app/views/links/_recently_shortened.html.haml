@@ -3,19 +3,19 @@
     .row
       .col-lg-7.col-md-8.text-center
         %h2
-          Recenty shortened links
+          Recently shortened links
 
         %table.table
           %tbody
             - recently_shortened_urls.each do |lnk|
               %tr
-                %td.col-xs-5
+                %td
                   %span
                     - short_link = show_short_url(lnk['short_url'])
                     = link_to short_link, url_for(short_link)
-                %td.col-xs-1
+                %td
                   %span.glyphicon.glyphicon-arrow-right
-                %td.col-xs-5
+                %td
                   %span
                     = link_to truncate(show_long_url(lnk['long_url']), lenght: 100), url_for(lnk['long_url'])
                   %span{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Clicks count"}
