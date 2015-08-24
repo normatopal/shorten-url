@@ -1,11 +1,31 @@
 body
   font-family: 'GrundschriftBold'
 
+a
+  color: #7E57C2
+
 .form-inline
   .btn
     width: 84px
   &+.form-inline
     margin-top: 6px
+  .form-group
+    .form-control
+      display: inline-block
+    &:first-of-type
+      input
+        font-family: Helvetica, Arial, Sans-Serif
+        &::-webkit-input-placeholder
+          font-family: 'GrundschriftBold'
+
+        &:-moz-placeholder
+          font-family: 'GrundschriftBold'
+
+        &::-moz-placeholder
+          font-family: 'GrundschriftBold'
+
+        &:-ms-input-placeholder
+          font-family: 'GrundschriftBold'
 
 #content
   .row
@@ -19,14 +39,29 @@ header
   font-family: 'GrundschriftBold'
   font-weight: bold
   font-style: normal
+  height: 80px
+  .row
+    margin-left: 0
+    margin-right: 0
 
 .form-inline
   input.form-control
-    width: 240px !important
+    width: 290px !important
     
 #form
   margin: 100px auto
+  
+#errors
+  margin-top: -20px
+  margin-bottom: 20px
+  li
+    list-style-type: none
+    color: #F06292
 
+#recently_shortened
+  .table
+    td
+      border: none
 .btn-custom
   background-color: #B39DDB
   border-color: #B39DDB
