@@ -3,6 +3,8 @@ body
 
 a
   color: #7E57C2
+  &:hover
+    color: darken(#7E57C2, 20%)
 
 .form-inline
   .btn
@@ -40,6 +42,7 @@ header
   font-weight: bold
   font-style: normal
   height: 80px
+  margin-bottom: 40px
   .row
     margin-left: 0
     margin-right: 0
@@ -62,6 +65,16 @@ header
   .table
     td
       border: none
+      &:first-of-type
+        text-align: right
+      &:nth-of-type(2)
+        text-align: center
+      &:nth-of-type(3)
+        text-align: left
+        > span:last-of-type
+          position: absolute
+          right: 50px
+
 .btn-custom
   background-color: #B39DDB
   border-color: #B39DDB
@@ -87,3 +100,29 @@ fieldset[disabled] .btn-custom:active,
 fieldset[disabled] .btn-custom.active
   background-color: #B39DDB
   border-color: #B39DDB
+
+.btn-copy
+  background-color: #EDE7F6
+  border-color: #EDE7F6
+
+.btn-copy:hover,
+.btn-copy:focus,
+.btn-copy:active,
+.btn-copy.active
+  background-color: #dfd4ef
+  border-color: #d1c2e8
+
+.btn-copy.disabled:hover,
+.btn-copy.disabled:focus,
+.btn-copy.disabled:active,
+.btn-copy.disabled.active,
+.btn-copy[disabled]:hover,
+.btn-copy[disabled]:focus,
+.btn-copy[disabled]:active,
+.btn-copy[disabled].active,
+fieldset[disabled] .btn-copy:hover,
+fieldset[disabled] .btn-copy:focus,
+fieldset[disabled] .btn-copy:active,
+fieldset[disabled] .btn-copy.active
+  background-color: #EDE7F6
+  border-color: #EDE7F6

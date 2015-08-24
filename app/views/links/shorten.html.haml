@@ -10,7 +10,7 @@
         .form-group
           = text_field_tag "new_url", show_short_url(@link.short_url), id: "short-url-link", class: "form-control"
         .form-group
-          = button_tag "Copy", id: 'btn-copy-link', class: 'btn btn-default'
+          = button_tag "Copy", id: 'btn-copy-link', class: 'btn btn-copy'
 
       = render "form", :link => @new_link
 

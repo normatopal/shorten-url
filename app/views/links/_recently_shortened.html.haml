@@ -1,7 +1,7 @@
 - if recently_shortenerd_count > 0
   %section#recently_shortened
     .row
-      .col-lg-8.col-md-10.text-center
+      .col-lg-7.col-md-8.text-center
         %h2
           Recenty shortened links
 
@@ -9,15 +9,15 @@
           %tbody
             - recently_shortened_urls.each do |lnk|
               %tr
-                %td
+                %td.col-xs-5
                   %span
                     - short_link = show_short_url(lnk['short_url'])
                     = link_to short_link, url_for(short_link)
-                %td
-                  %span.glyphicon.glyphicon-transfer
-                %td
+                %td.col-xs-1
+                  %span.glyphicon.glyphicon-arrow-right
+                %td.col-xs-5
                   %span
                     = link_to truncate(show_long_url(lnk['long_url']), lenght: 100), url_for(lnk['long_url'])
-                %td
                   %span
                     = lnk['clicks_count']
+                    %span.glyphicon.glyphicon-stats
