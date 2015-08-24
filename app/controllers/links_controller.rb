@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_filter Proc.new { session[:recently_shortenerd] ||= [] }, only: [:create, :redirect_to_url]
+  before_filter Proc.new { session[:recently_shortenerd] ||= [] }, only: [:new, :create, :redirect_to_url]
 
   def new
     @link = Link.new
