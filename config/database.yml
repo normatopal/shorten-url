@@ -3,9 +3,6 @@ development:
   reconnect: false
   database: shortenurl
   pool: 5
-  username: root
-  password: ubuntu
-  host: localhost
 
 test:
   adapter: mysql
@@ -13,7 +10,4 @@ test:
   reconnect: false
   database: shortenurl_test
   pool: 5
-  username: root
-  password: ubuntu
-  host: localhost
 

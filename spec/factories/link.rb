@@ -6,6 +6,7 @@ FactoryGirl.define do
     clicks_count 0
 
     factory :invalid_link do
+      short_url ""
       long_url ""
     end
 

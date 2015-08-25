@@ -1,28 +1,20 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Appliction allows to shorten your unfriendly long links to short readable format.
 
-Things you may want to cover:
+Current functionality:
 
-* Ruby version
+* Web interface for links transformation
 
-* System dependencies
+* Shorten module for short link generation
 
-* Configuration
+* Redirect request to original link
 
-* Database creation
+* Rspec tests for link model and controller
 
-* Database initialization
+* Session store for recently shortened records
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* MySql database for shortened links
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+

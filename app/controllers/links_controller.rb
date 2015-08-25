@@ -8,11 +8,9 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
 
-    #if @link.valid?
     if @link.save
       session[:recently_shortenerd].push(@link)
-      #render "shorten"
-      redirect_to "/shorten/#{@link.short_url}"
+      redirect_to shorten_path(@link.short_url)
     else
       render "new"
     end
@@ -20,12 +18,16 @@ class LinksController < ApplicationController
 
   def shorten
     @link = Link.find_by_short_url(params[:short_url])
-    @new_link = Link.new
+    if @link
+      @new_link = Link.new
+    else
+      redirect_to root_path
+    end
   end
 
   def redirect_to_url
     link = Link.find_by_short_url(params[:short_url])
-    if link.present?
+    if link.present? && link.long_url.present?
        link.update_attribute(:clicks_count, link.clicks_count + 1)
        recently_link = session[:recently_shortenerd].detect{|lnk| lnk['short_url'] == link.short_url}
        recently_link['clicks_count'] = link.clicks_count if recently_link.present?

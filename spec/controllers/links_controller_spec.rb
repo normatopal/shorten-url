@@ -23,10 +23,9 @@ describe LinksController do
            expect{ post :create, link: attributes_for(:link) }.to change(Link, :count).by(1)
        end
 
-       it "renders the shorten template" do
+       it "redirects the shorten action" do
          post :create, link: attributes_for(:link)
-         expect(response).to render_template :shorten
-         expect(assigns(:new_link)).to be_a_new(Link)
+         expect(response.location).to include(shorten_path(assigns(:link).short_url))
        end
 
        it "stores link in session" do
@@ -48,9 +47,29 @@ describe LinksController do
 
   end
 
+  describe 'GET #shorten' do
+
+    context "with existing short url" do
+      it "renders the :shorten template" do
+        link = create(:link)
+        get :shorten, short_url: link.short_url
+        expect(response).to render_template :shorten
+        expect(assigns(:new_link)).to be_a_new(Link)
+      end
+    end
+
+    context "with not existing short url" do
+      it "redirects to root page" do
+        get :shorten, short_url: build(:invalid_link).short_url
+        expect(response).to redirect_to root_path
+      end
+    end
+
+  end
+
   describe 'GET #redirect_to_url' do
 
-    context "with valid short url" do
+    context "with valid url params" do
         it "redirects to long url" do
           link = create(:link)
           get :redirect_to_url, short_url: link.short_url
@@ -62,6 +81,17 @@ describe LinksController do
           get :redirect_to_url, short_url: link.short_url
           expect(link.reload.clicks_count).to eq 1
         end
+    end
+
+    context "with invalid url params" do
+
+      it "redirects to root path with invalid long url" do
+        link = create(:link)
+        Link.stub(:find_by_short_url).and_return(build(:invalid_link))
+        get :redirect_to_url, short_url: link.short_url
+        expect(response).to redirect_to root_path
+      end
+
     end
 
   end
