@@ -11,11 +11,16 @@ class LinksController < ApplicationController
     #if @link.valid?
     if @link.save
       session[:recently_shortenerd].push(@link)
-      @new_link = Link.new
-      render "shorten"
+      #render "shorten"
+      redirect_to "/shorten/#{@link.short_url}"
     else
       render "new"
     end
+  end
+
+  def shorten
+    @link = Link.find_by_short_url(params[:short_url])
+    @new_link = Link.new
   end
 
   def redirect_to_url
@@ -35,7 +40,7 @@ class LinksController < ApplicationController
   private
 
   def link_params
-    params.require(:link).permit(:short_url, :long_url, :clicks_count)
+    params.require(:link).permit(:short_url, :long_url, :clicks_count, :id)
   end
 
 end
