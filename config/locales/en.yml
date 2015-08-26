@@ -20,4 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "1 error prohibited this link from being saved"
+          other:  "%{count} errors prohibited this link from being saved"
+        body: "There were problems with the following fields:"
+
+    attributes:
+      link:
+        long_url: "Your url"

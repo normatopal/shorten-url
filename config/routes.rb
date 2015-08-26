@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-  #get '/shorten' => 'links#generate', as: :generate
   resources :links, :only => [:new, :create]
 
   get 'shorten/:short_url', to: 'links#shorten', as: 'shorten'
@@ -9,5 +7,5 @@ Rails.application.routes.draw do
   #root 'home#index'
   root 'links#new'
 
-  get '/:short_url' => 'links#redirect_to_url'
+  get '/:short_url' => 'links#redirect_to_url', as: 'redirect_to_long'
 end

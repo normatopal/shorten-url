@@ -3,7 +3,8 @@ module LinksHelper
   RECENTLY_SHOWED = 5
 
   def show_short_url(url)
-    request.protocol + request.host_with_port + "/#{url}"
+    #request.protocol + request.host_with_port + "/#{url}"
+    Rails.application.routes.url_helpers.redirect_to_long_url(short_url: url, :host => request.host_with_port)
   end
 
   def show_long_url(url)
@@ -15,7 +16,6 @@ module LinksHelper
   end
 
   def recently_shortened_urls
-    session[:recently_shortenerd].shift(recently_shortenerd_count - RECENTLY_SHOWED) if recently_shortenerd_count > RECENTLY_SHOWED # show last 5 links
     session[:recently_shortenerd].reverse
   end
 

@@ -14,6 +14,8 @@
 *.orig
 .idea/
 
+config/database.yml
+
 #Ignore Backup files
 *.html.haml.BACKUP.*.haml
 *.html.haml.LOCAL.*.haml
