@@ -43,7 +43,7 @@ class LinksController < ApplicationController
   private
 
   def link_params
-    params.require(:link).permit(:short_url, :long_url, :clicks_count, :id)
+    params.require(:link).permit(:short_url, :long_url)
   end
 
 end

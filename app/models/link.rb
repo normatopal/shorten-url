@@ -34,6 +34,7 @@ class Link < ActiveRecord::Base
 
   private
   def random_characters(length)
+    # shuffle array and choose n elements
     Shorter::CHARACTERS.sample(length).join
   end
 
