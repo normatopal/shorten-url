@@ -3,8 +3,7 @@ module LinksHelper
   RECENTLY_SHOWED = 5
 
   def show_short_url(url)
-    #request.protocol + request.host_with_port + "/#{url}"
-    Rails.application.routes.url_helpers.redirect_to_long_url(short_url: url, :host => request.host_with_port)
+    redirect_to_long_url(short_url: url)
   end
 
   def show_long_url(url)

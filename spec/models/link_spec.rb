@@ -16,13 +16,13 @@ describe Link do
       it "not allows empty value" do
         link = build(:link, long_url: "")
         link.valid?
-        expect(link.errors[:long_url]).to include('is not valid')
+        expect(link.errors[:long_url]).to include('is empty')
       end
 
       it "detect bad url" do
         link = build(:link, long_url: "http://api.rubyonrails.org\my_rails")
         link.valid?
-        expect(link.errors[:long_url]).to include('is not valid')
+        expect(link.errors[:long_url].first).to include('bad hostname')
       end
     end
 
@@ -31,14 +31,14 @@ describe Link do
   describe ".generate_short_url" do
 
     it "generates url from n symbols" do
-      link = build(:link)
+      link = build(:short_link)
       link.generate_short_url
       expect(link.short_url.length).to eq 5
     end
 
     it "generates url from n+1 symbols" do
       first_link = create(:link)
-      second_link = build(:link)
+      second_link = build(:short_link)
       second_link.stub(:random_characters).with(5).and_return(first_link.short_url)
       second_link.stub(:random_characters).with(6).and_return('RgfyEj')
       second_link.generate_short_url
@@ -46,16 +46,10 @@ describe Link do
     end
 
     it "detect generation error" do
-      link = build(:link)
+      link = build(:short_link)
       link.stub(:random_characters).and_return("")
       link.valid?
       expect(link.errors[:short_url]).to include('can not be generated')
-    end
-
-    it "returns if long url is invalid" do
-      link = build(:invalid_link)
-      link.generate_short_url
-      expect(link.short_url.length).to eq 0
     end
 
   end

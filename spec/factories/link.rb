@@ -10,6 +10,10 @@ FactoryGirl.define do
       long_url ""
     end
 
+    factory :short_link do
+      short_url ""
+    end
+
   end
 
 end

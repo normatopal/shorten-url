@@ -8,8 +8,9 @@ module Shorter
 
   CHARACTERS = chars_array - ambiguous_chars.scan(/./)
 
-  mattr_accessor :url_length, :max_length
+  mattr_accessor :url_length, :max_length, :random_attempts
   self.url_length = 5
   self.max_length = 10
+  self.random_attempts = 5
 
 end

@@ -1,34 +1,38 @@
-require 'shorter'
+require 'common/shorter'
 
 class Link < ActiveRecord::Base
 
   validates_presence_of :short_url, :message => "can not be generated"
-  validates_presence_of :long_url, :message => "is not valid"
+  validates_presence_of :long_url, :message => "is empty"
 
   before_validation(on: :create) do
-    prepare_long_url
-    generate_short_url
+    if long_url.present?
+      prepare_long_url
+      generate_short_url
+    end
   end
 
   URL_PROTOCOL_HTTP = "http://"
-  REGEX_LINK_HAS_PROTOCOL = Regexp.new('\Ahttp:\/\/|\Ahttps:\/\/', Regexp::IGNORECASE)
 
   def prepare_long_url
-      self.long_url =
-        begin
-          long_url = URL_PROTOCOL_HTTP + self.long_url.strip unless self.long_url =~ REGEX_LINK_HAS_PROTOCOL
-          URI.parse(long_url || self.long_url).normalize.to_s
-        rescue => e
-          logger.error("Link generation error! Original link: " + self.long_url + "; Error: " + e.message)
-          ''
-        end
+      begin
+        url = self.long_url
+        url.insert(0, URL_PROTOCOL_HTTP) if URI(url).scheme.blank?
+        errors.add(:long_url, 'is not valid') unless URI(url).kind_of?(URI::HTTP)
+        self.long_url = url
+      rescue => e
+        logger.error("Link generation error! Original link: " + self.long_url + "; Error: " + e.message)
+        errors.add(:long_url, e.message)
+      end
   end
 
   def generate_short_url
-    return if long_url.blank?
-    (Shorter.url_length..Shorter.max_length).detect do |length|
-      url = random_characters(length)
-      self.short_url = url if self.class.where(short_url: url).empty?
+    length = Shorter.url_length
+    while length <= Shorter.max_length && self.short_url.blank?
+      url_arr = []
+      Shorter.random_attempts.times { url_arr << random_characters(length) }
+      url_arr.detect{|url| self.short_url = url if self.class.where(short_url: url ).empty? }
+      length +=1
     end
   end
 
