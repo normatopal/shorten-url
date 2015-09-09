@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :links, :only => [:new, :create]
 
   get 'shorten/:short_url', to: 'links#shorten', as: 'shorten'

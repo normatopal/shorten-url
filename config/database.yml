@@ -4,6 +4,7 @@ development:
   database: shortenurl
   pool: 5
   username: root
+  password: ubuntu
   host: localhost
 
 test:
@@ -13,5 +14,6 @@ test:
   database: shortenurl_test
   pool: 5
   username: root
+  password: ubuntu
   host: localhost
 

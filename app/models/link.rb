@@ -2,8 +2,8 @@ require 'common/shorter'
 
 class Link < ActiveRecord::Base
 
-  validates_presence_of :short_url, :message => "can not be generated"
-  validates_presence_of :long_url, :message => "is empty"
+  validates_presence_of :short_url, :message => "can not be generated", :if => proc{|l| l.long_url.present?}
+  validates :long_url, presence: true
 
   before_validation(on: :create) do
     if long_url.present?

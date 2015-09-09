@@ -12,4 +12,10 @@
     = render 'shared/header'
     .container
       %section#content
+        - if notice
+          .alert.alert-success
+            = notice
+        - if alert
+          .alert.alert-danger
+            = alert
         = yield

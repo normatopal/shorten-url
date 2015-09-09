@@ -27,6 +27,14 @@ en:
           one:    "1 error prohibited this link from being saved"
           other:  "%{count} errors prohibited this link from being saved"
         body: "There were problems with the following fields:"
+      messages:
+        blank: "can't be empty"
+        not_a_number: "is not a number"
+        taken: "has already been taken"
+        confirmation: "doesn't match confirmation"
+        invalid: "is invalid"
+        invalid_date: "is not a valid date"
+        too_short:  "is too short (minimum is %{count} characters)"
 
     attributes:
       link:

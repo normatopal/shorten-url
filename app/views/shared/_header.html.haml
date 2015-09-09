@@ -3,3 +3,9 @@
     .col-xs-10.col-xs-offset-2
       %h1
         shorten-url
+      %div
+        - if user_signed_in?
+          = link_to "Log out", destroy_user_session_path, method: :delete, class: "btn.btn-mini"
+        - else
+          = link_to "Log in", new_user_session_path, class: "btn.btn-mini"
+          = link_to "Sign in", new_user_registration_path, class: "btn.btn-mini"
