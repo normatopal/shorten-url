@@ -2,6 +2,8 @@ require 'common/shorter'
 
 class Link < ActiveRecord::Base
 
+  belongs_to :user
+
   validates_presence_of :short_url, :message => "can not be generated", :if => proc{|l| l.long_url.present?}
   validates :long_url, presence: true
 

@@ -30,7 +30,7 @@ describe LinksController do
 
        it "stores link in session" do
          post :create, link: attributes_for(:link)
-         expect(session[:recently_shortenerd]).to include(assigns(:link))
+         expect(session[:recently_shortened]).to include(assigns(:link))
        end
     end
 

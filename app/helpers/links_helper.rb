@@ -10,12 +10,12 @@ module LinksHelper
     url.sub(/^https?\:\/\//, '').sub(/^www./,'')
   end
 
-  def recently_shortenerd_count
-    session[:recently_shortenerd].count
+  def recently_shortened_count
+    @recently_shortened.count
   end
 
   def recently_shortened_urls
-    session[:recently_shortenerd].reverse
+    @recently_shortened.reverse
   end
 
 end
