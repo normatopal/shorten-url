@@ -1,0 +1,29 @@
+%section#your_links
+  .row
+    .col-lg-8.col-md-10.col-sm-12.col-lg-offset-2.col-md-offset-1.text-center
+      %h2
+        Your Links
+      = paginate @links
+      %table.table
+        %tbody
+          - @links.each do |link|
+            %tr
+              %td.col-xs-1
+                %span
+                - if link.name.blank?
+                  = link_to "Add name", "#"
+              %td.col-xs-2
+                %span
+                  = show_short_url(link.short_url)
+                = link_to "Copy", "#", class: 'btn-copy'
+              %td.col-xs-1
+                %span.glyphicon.glyphicon-arrow-right
+              %td.col-xs-6
+                %span
+                  = link_to "#{link.long_url}", url_for(link.long_url)
+              %td.col-xs-1
+                %span{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Clicks count"}
+                  = "#{link.clicks_count}"
+                  %span.glyphicon.glyphicon-stats
+
+= render "new"

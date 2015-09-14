@@ -1,10 +1,10 @@
 class LinksController < ApplicationController
   before_filter :set_resently_shortened_links, only: [:new, :shorten, :redirect_to_url]
 
-  #before_filter :authenticate_user!, only: :index
+  before_filter :authenticate_user!, only: :index
 
   def index
-    @links = current_user.links
+    @links = current_user.links.page(params[:page])
     @link = current_user.links.new
   end
 
