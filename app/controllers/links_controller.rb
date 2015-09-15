@@ -25,7 +25,6 @@ class LinksController < ApplicationController
   def shorten
     @link = Link.find_by_short_url(params[:short_url])
     # show only last 5 links
-    binding.pry
     @recently_shortened.shift(@recently_shortened.count - LinksHelper::RECENTLY_SHOWED) if @recently_shortened.count > LinksHelper::RECENTLY_SHOWED
     if @link
       @new_link = Link.new
