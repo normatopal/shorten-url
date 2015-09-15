@@ -48,6 +48,9 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'mysql'
+
+  gem 'rubocop', require: false
+  gem 'haml-lint', require: false
 end
 
 
