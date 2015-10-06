@@ -50,6 +50,21 @@ class LinksController < ApplicationController
 
   end
 
+  def edit
+    @link = Link.find(params[:id])
+    respond_to do |format|
+      format.js { render 'edit_name' }
+    end
+  end
+
+  def update
+    @link = Link.find(params[:id])
+    @link.update_attribute(:name, params['link']['name']) unless params['btn-edit-name-cancel']
+    respond_to do |format|
+      format.js { render 'link_name' }
+    end
+  end
+
   # Strong Parameters in rails ~> 4
 
   private

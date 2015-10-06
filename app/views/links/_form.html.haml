@@ -1,7 +1,6 @@
 = form_for link, :html => { :class => 'form-inline' } do |f|
-
   = render "shared/error_message", entity: link
   .form-group
     = f.text_field :long_url, :placeholder => "Paste your link here", :class => "form-control"
   .form-group
-    = f.submit "Generate", :class => "btn btn-custom"
+    = f.submit "Generate", :class => "btn btn-custom", :title => "Save name", :remote => true

@@ -8,10 +8,9 @@
         %tbody
           - @links.each do |link|
             %tr
-              %td.col-xs-1
-                %span
-                - if link.name.blank?
-                  = link_to "Add name", "#"
+              %td.col-xs-2
+                .div{:id => "edit-name-container-#{link.id}"}
+                  = render "link_name", link: link
               %td.col-xs-2
                 %span
                   = show_short_url(link.short_url)

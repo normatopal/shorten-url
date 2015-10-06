@@ -1,0 +1,7 @@
+= form_for @link, :remote => true, :html => { :class => 'form-inline' } do |f|
+  = f.text_field :name #, :class => "form-control"
+  = button_tag(type: 'submit', class: 'btn btn-xs', name: 'btn-save-name', title: 'Save name') do
+    %span.glyphicon.glyphicon-ok
+  = button_tag(type: 'submit', class: 'btn btn-xs', name: 'btn-edit-name-cancel', title: 'Cancel') do
+    %span.glyphicon.glyphicon-remove
+
