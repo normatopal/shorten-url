@@ -2,6 +2,8 @@ require 'common/shorter'
 
 # link class
 class Link < ActiveRecord::Base
+  acts_as_paranoid
+
   belongs_to :user
 
   validates_presence_of :short_url,

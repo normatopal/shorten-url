@@ -15,3 +15,19 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+//= require data-confirm-modal
+
+$(document).ready(function(){
+    setTimeout(function(){
+        $('.alert').remove();
+    }, 5000);
+
+
+    dataConfirmModal.setDefaults({
+        title: 'Confirm your action',
+        commit: 'Remove',
+        cancel: 'Cancel'
+    });
+
+})

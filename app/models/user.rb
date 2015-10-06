@@ -5,5 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :links
+  acts_as_paranoid
+
+  has_many :links, :dependent => :destroy
 end

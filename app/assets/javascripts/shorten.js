@@ -3,7 +3,7 @@ $(document).ready(function() {
         $("#short-url-link").select();
     });
 
-    $($("#short-url-link")).blur(function() {
+    $("#short-url-link").blur(function() {
         this.setSelection({"start":0, "end":0});
     });
 

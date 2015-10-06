@@ -36,6 +36,9 @@ gem 'devise'
 
 gem "kaminari"
 
+gem 'rails4_acts_as_paranoid'
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
+
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'debugger'

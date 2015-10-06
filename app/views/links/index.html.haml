@@ -24,5 +24,9 @@
                 %span{"data-placement" => "right", "data-toggle" => "tooltip", :title => "Clicks count"}
                   = "#{link.clicks_count}"
                   %span.glyphicon.glyphicon-stats
-
+              %td.col-xs-1
+                = link_to link_path(link), "data-confirm" => "Are you sure?", :method => :delete, :class => 'btn btn-mini btn-delete-link', :title => "Remove link confirmation" do
+                  %span.glyphicon.glyphicon-trash
+      - unless @links.any?
+        No links in list
 = render "new"

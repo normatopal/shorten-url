@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908190813) do
+ActiveRecord::Schema.define(version: 20151006083055) do
 
   create_table "links", force: :cascade do |t|
     t.string   "short_url",    limit: 255, default: "", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150908190813) do
     t.datetime "updated_at"
     t.string   "name",         limit: 255
     t.integer  "user_id",      limit: 4
+    t.datetime "deleted_at"
   end
 
   add_index "links", ["short_url"], name: "index_links_on_short_url", unique: true, using: :btree
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150908190813) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.datetime "deleted_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
